@@ -1,3 +1,4 @@
+console.log("script.js is loading correctly!");
 document.addEventListener("DOMContentLoaded", function() {
     // Mostrar la primera categoría por defecto
     document.querySelector(".category").classList.add("active");
