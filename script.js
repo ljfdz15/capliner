@@ -1,4 +1,8 @@
 console.log("script.js is loading correctly!");
+function mostrarPagina(pagina) {
+            document.querySelectorAll('.pagina').forEach(p => p.classList.add('oculto'));
+            document.getElementById(pagina).classList.remove('oculto');
+        }
 document.addEventListener("DOMContentLoaded", function() {
     // Mostrar la primera categoría por defecto
     document.querySelector(".category").classList.add("active");
