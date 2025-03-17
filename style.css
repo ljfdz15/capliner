@@ -74,10 +74,13 @@ th {
 
 .icono {
     position: absolute;
-    top: 10px;
-    right: 35px;
-    color: white;
-    font-size: 60px; /* Ajusta el tamaño del ícono */
+    top: 4%;
+    right: 2%;
+}
+
+.icono img {
+    width: 50px;  /* Reduce el tamaño de la imagen */
+    height: auto; /* Mantiene la proporción */
 }
 
 h2{
