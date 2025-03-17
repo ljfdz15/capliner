@@ -99,3 +99,15 @@ h2{
         .pagina { text-align: center; margin: 20px; }
         .menu { position: absolute; top: 10px; left: 10px; }
         select { padding: 5px; font-size: 16px; }
+
+.contacto {
+  text-align: left;
+  margin-bottom: 20px;
+}
+p1 {
+  display: block;
+  margin: 5px 0;
+}
+strong {
+  font-weight: bold;
+}
