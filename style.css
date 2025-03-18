@@ -79,7 +79,7 @@ th {
 }
 
 .icono img {
-    width: 50px;  /* Reduce el tamaño de la imagen */
+    width: 150px;  /* Reduce el tamaño de la imagen */
     height: auto; /* Mantiene la proporción */
 }
 
