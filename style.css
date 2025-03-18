@@ -63,7 +63,7 @@ th {
 }
 
 .icono {
-    width: 30%;  /* Reduce el tamaño de la imagen */
+    width: 20%;  /* Reduce el tamaño de la imagen */
     max-width: 150px;
     position: absolute;
     top: 5px;
