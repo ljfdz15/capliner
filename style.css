@@ -6,13 +6,6 @@ body {
             text-align: center;
 }
 
-header {
-            background-color: #F5BA9D;
-            color: black;
-            padding: 15px 0;
-            font-size: 14px;
-}
-
 p {
   text-align: left;
 }
@@ -46,10 +39,6 @@ nav ul li a:hover {
     width: 100%;
     margin: auto;
     overflow: hidden;
-}
-
-h2 {
-    color: #333;
 }
 
 table {
@@ -88,6 +77,11 @@ th {
     height: auto; /* Mantiene la proporción */
 }
 
+h1{
+    text-align: center;
+    font-size: 20px;
+}
+
 h2{
   text-align: center;
   font-size: 14px;
@@ -114,7 +108,7 @@ strong {
     background-color: #F34213;
     color: white;
     padding: 15px 0;
-    font-size: 40px;
+    font-size: 30px;
 }
 .menu {
     position: absolute;
