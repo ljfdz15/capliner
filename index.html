@@ -6,49 +6,14 @@
     <title>CAPLINER de México</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <style>
-        .header {
-            background-color: #F5BA9D;
-            color: black;
-            padding: 15px 0;
-            font-size: 40px;
-        }
-        .menu {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-        }
-        select {
-            padding: 8px;
-            font-size: 16px;
-            border-radius: 5px;
-        }
-        .pagina {
-            margin: 50px auto;
-            padding: 20px;
-            background: white;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            width: 80%;
-            max-width: 800px;
-            border-radius: 10px;
-        }
-        .pagina img {
-            width: auto;
-            border-radius: 10px;
-            max-height: 400px;
-        }
-        .oculto { display: none; }
-    </style>
 </head>
 <body>
     <div class="header">CAPLINER</div>
-    <nav class="menu">
-        <select onchange="mostrarPagina(this.value)">
-            <option value="inicio">Inicio</option>
-            <option value="productos">Productos</option>
-            <option value="sobre-nosotros">Sobre Nosotros</option>
-            <option value="contacto">Contáctanos</option>
-        </select>
+    <nav class="navbar">
+        <a href="#" onclick="mostrarPagina('inicio')">Inicio</a>
+        <a href="#" onclick="mostrarPagina('productos')">Productos</a>
+        <a href="#" onclick="mostrarPagina('sobre-nosotros')">Sobre Nosotros</a>
+        <a href="#" onclick="mostrarPagina('contacto')">Contáctanos</a>
     </nav>
     <div class="icono">
         <img src="https://raw.githubusercontent.com/ljfdz15/capliner/refs/heads/main/imagenes/logo_capliner_v1.png" alt="Icono">
@@ -58,22 +23,11 @@
         <h1>Bienvenido a CAPLINER</h1>
         <p>Somos una empresa mexicana ubicada en el estado de Jalisco, especializada en la fabricación de compuestos químicos plastificantes de alta calidad, utilizados principalmente en liners de corcholatas. </p>           <p>Nos enfocamos en ofrecer soluciones seguras y eficientes, incluyendo opciones libres de PVC que cumplen con la normativa de la Propuesta 65 de California, garantizando productos seguros para el consumidor final.</p>
         <p>Nuestro compromiso con la excelencia no solo se refleja en nuestros productos, sino también en nuestro servicio al cliente.</p> 
-        <p>Brindamos asesoría especializada, tiempos de entrega confiables y una atención personalizada que nos distingue en el mercado. ¡Confía en nosotros para brindarte la mejor solución en compuestos químicos.</p>
+        <p>Brindamos asesoría especializada, tiempos de entrega confiables y una atención personalizada que nos distingue en el mercado. Confía en nosotros para brindarte la mejor solución en compuestos químicos.</p>
         <img src="https://raw.githubusercontent.com/ljfdz15/capliner/refs/heads/main/imagenes/wave1.jpg" alt="Imagen de inicio">
     </div>
 
     <div id="productos" class="pagina oculto">
-        <header>
-            <h1>Compuestos Químicos - Liners para Corcholatas</h1>
-            <nav>
-                <ul>
-                    <li><a href="#pvc-regular">PVC Regular</a></li>
-                    <li><a href="#pvc-oxygen">PVC Regular Oxygen Scavenger</a></li>
-                    <li><a href="#pvc-free">PVC Free</a></li>
-                    <li><a href="#pvc-free-oxygen">PVC Free Oxygen Scavenger</a></li>
-                </ul>
-            </nav>
-        </header>
         <div class="container">
             <div class="category" id="pvc-regular">
             <h2>PVC Regular</h2>
@@ -142,7 +96,7 @@
             <p1><strong>Nombre:</strong> Prisciliano Zúñiga</p1>
             <p1><strong>Posición:</strong> Director Operaciones</p1>
             <p1><strong>Correo:</strong> prisciliano.zuniga@capliner.com.mx</p1>
-            <p1><strong>Número Celular:</strong> *</p1>
+            <p1><strong>Número Celular:</strong> +52 33 38123556</p1>
         </div>
 
         <div class="contacto">
