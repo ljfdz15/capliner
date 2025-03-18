@@ -137,6 +137,7 @@ select {
 }
 .pagina img {
     width: auto;
+    max-width: 90%;
     border-radius: 10px;
     max-height: 400px;
 }
