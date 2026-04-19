@@ -8,72 +8,96 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <body>
-    <div class="header">CAP LINER</div>
+
+    <div class="header">
+        CAP LINER
+        <div class="icono">
+            <img src="https://raw.githubusercontent.com/ljfdz15/capliner/refs/heads/main/imagenes/logo_capliner_v1_blanco.png" alt="Logo Cap Liner">
+        </div>
+    </div>
+
     <nav class="navbar">
+        <button class="hamburger" id="menuBtn" aria-label="Menú">
+            <i class="fa-solid fa-bars"></i>
+        </button>
         <a href="#" onclick="mostrarPagina('inicio')">Inicio</a>
         <a href="#" onclick="mostrarPagina('productos')">Productos</a>
         <a href="#" onclick="mostrarPagina('sobre-nosotros')">Sobre Nosotros</a>
         <a href="#" onclick="mostrarPagina('contacto')">Contáctanos</a>
     </nav>
-    <div class="icono">
-        <img src="https://raw.githubusercontent.com/ljfdz15/capliner/refs/heads/main/imagenes/logo_capliner_v1_blanco.png" alt="Icono">
-    </div>
-    
+
+    <!-- INICIO -->
     <div id="inicio" class="pagina">
         <h1>Bienvenido a CAP LINER</h1>
-        <p>Somos una empresa mexicana ubicada en el estado de Jalisco, especializada en la fabricación de compuestos químicos plastificantes de alta calidad, utilizados principalmente en liners de corcholatas. </p>           <p>Nos enfocamos en ofrecer soluciones seguras y eficientes, incluyendo opciones libres de PVC que cumplen con la normativa de la Propuesta 65 de California, garantizando productos seguros para el consumidor final.</p>
-        <p>Nuestro compromiso con la excelencia no solo se refleja en nuestros productos, sino también en nuestro servicio al cliente.</p> 
+        <p>Somos una empresa mexicana ubicada en el estado de Jalisco, especializada en la fabricación de compuestos químicos plastificantes de alta calidad, utilizados principalmente en liners de corcholatas.</p>
+        <p>Nos enfocamos en ofrecer soluciones seguras y eficientes, incluyendo opciones libres de PVC que cumplen con la normativa de la Propuesta 65 de California, garantizando productos seguros para el consumidor final.</p>
+        <p>Nuestro compromiso con la excelencia no solo se refleja en nuestros productos, sino también en nuestro servicio al cliente.</p>
         <p>Brindamos asesoría especializada, tiempos de entrega confiables y una atención personalizada que nos distingue en el mercado. Confía en nosotros para brindarte la mejor solución en compuestos químicos.</p>
-        <img src="https://raw.githubusercontent.com/ljfdz15/capliner/refs/heads/main/imagenes/todo_el_team.jpg" alt="Imagen de inicio">
+        <img src="https://raw.githubusercontent.com/ljfdz15/capliner/refs/heads/main/imagenes/todo_el_team.jpg" alt="Equipo Cap Liner">
     </div>
 
+    <!-- PRODUCTOS -->
     <div id="productos" class="pagina oculto">
-        <div class="container">
-            <div class="category" id="pvc-regular">
+
+        <h1>Nuestros Productos</h1>
+
+        <div class="category" id="pvc-regular">
             <h1>PVC Regular</h1>
-            <table>
-                <tr>
-                    <th>Nombre</th><th>Código</th><th>Tipo de Corona</th><th>Dureza</th><th>Densidad</th><th>Fluidez</th>
-                </tr>
-                <tr><td>SEMI PUFF DOP</td><td>ES-02SC-01</td><td>PRY OFF</td><td>60 +/- 3 SHORE A</td><td>1.19 +/- 0.2 g/cm3</td><td>100 a 300 mg/10 min</td></tr>
-              <tr><td>SEMI PUFF "LIBRE DE FTALATOS" APROBADO PRO. 65 CALIFORNIA</td><td>ES-02SC-01-20</td><td>PRY OFF</td><td>60 +/- 3 SHORE A</td><td>1.19 +/- 0.2 g/cm3</td><td>100 a 300 mg/10 min</td></tr>
-                <tr><td>PUFF TWIST EG-2 DOP</td><td>ES-02SC-17 EG-2</td><td>TWIST OFF</td><td>60 +/- 3 SHORE A</td><td>1.19 +/- 0.2 g/cm3</td><td>300 a 500 mg/10 min</td></tr>
-              <tr><td>PUFF TWIST EG-20 "LIBRE DE FTALATOS" APROBADO PRO. 65 CALIFORNIA</td><td>ES-02SC-17 EG-20</td><td>TWIST OFF</td><td>60 +/- 3 SHORE A</td><td>1.19 +/- 0.2 g/cm3</td><td>300 a 500 mg/10 min</td></tr>
-            </table>
-            </div>
-            <div class="category" id="pvc-oxygen">
-                <h1>PVC Regular Oxygen Scavenger</h1>
+            <div class="table-wrapper">
                 <table>
                     <tr>
                         <th>Nombre</th><th>Código</th><th>Tipo de Corona</th><th>Dureza</th><th>Densidad</th><th>Fluidez</th>
                     </tr>
-                    <tr><td>SEMI PUFF "LIBRE DE FTALATOS" OXYGEN SCAVENGER APROBADO PRO. 65 CALIFORNIA</td><td>ES-02SC-01-21 OXYGEN</td><td>PRY OFF</td><td>60 +/- 3 SHORE A</td><td>1.19 +/- 0.2 g/cm3</td><td>100 a 300 mg/10 min</td></tr>
-                <tr><td>PUFF TWIST "LIBRE DE FTALATOS" OXYGEN SCAVENGER APROBADO PRO. 65 CALIFORNIA</td><td>ES-02SC-17 EG-21 OXYGEN</td><td>TWIST OFF</td><td>60 +/- 3 SHORE A</td><td>1.19 +/- 0.2 g/cm3</td><td>300 a 500 mg/10 min</td></tr>
-                </table>
-            </div>
-            <div class="category" id="pvc-free">
-                <h1>PVC Free</h1>
-                <table>
-                    <tr>
-                        <th>Nombre</th><th>Código</th><th>Tipo de Corona</th><th>Dureza</th><th>Densidad</th><th>Fluidez</th>
-                    </tr>
-                    <tr><td>PVC FREE PRY CC-16</td><td>ES-02SC-19-CC-16</td><td>PRY OFF</td><td>90 +/- 3 SHORE A</td><td>0.75 +/- 0.2 g/cm3</td><td>7 a 10 g/10 min</td></tr>
-                <tr><td>PVC FREE TWIST CC-17</td><td>ES-02SC-19-CC-17</td><td>TWIST OFF</td><td>80 +/- 3 SHORE A</td><td>0.75 +/- 0.2 g/cm3</td><td>7 a 10 g/10 min</td></tr>
-                </table>
-            </div>
-            <div class="category" id="pvc-free-oxygen">
-                <h1>PVC Free Oxygen</h1>
-                <table>
-                    <tr>
-                        <th>Nombre</th><th>Código</th><th>Tipo de Corona</th><th>Dureza</th><th>Densidad</th><th>Fluidez</th>
-                    </tr>
-                    <tr><td>PVC FREE PRY OXYGEN SCAVENGER</td><td>ES-02SC-19-CC-18 PRY OXYGEN</td><td>PRY OFF</td><td>90 +/- 3 SHORE A</td><td>0.75 +/- 0.2 g/cm3</td><td>7 a 10 g/10 min</td></tr>
-                <tr><td>PVC FREE  TWIST OXYGEN SCAVENGER</td><td>ES-02SC-19-CC- 19 TWIST OXYGEN</td><td>TWIST OFF</td><td>80 +/- 3 SHORE A</td><td>0.75 +/- 0.2 g/cm3</td><td>7 a 10 g/10 min</td></tr>
+                    <tr><td>SEMI PUFF DOP</td><td>ES-02SC-01</td><td>PRY OFF</td><td>60 ± 3 Shore A</td><td>1.19 ± 0.2 g/cm³</td><td>100 – 300 mg/10 min</td></tr>
+                    <tr><td>SEMI PUFF "LIBRE DE FTALATOS" – Aprobado Prop. 65 California</td><td>ES-02SC-01-20</td><td>PRY OFF</td><td>60 ± 3 Shore A</td><td>1.19 ± 0.2 g/cm³</td><td>100 – 300 mg/10 min</td></tr>
+                    <tr><td>PUFF TWIST EG-2 DOP</td><td>ES-02SC-17 EG-2</td><td>TWIST OFF</td><td>60 ± 3 Shore A</td><td>1.19 ± 0.2 g/cm³</td><td>300 – 500 mg/10 min</td></tr>
+                    <tr><td>PUFF TWIST EG-20 "LIBRE DE FTALATOS" – Aprobado Prop. 65 California</td><td>ES-02SC-17 EG-20</td><td>TWIST OFF</td><td>60 ± 3 Shore A</td><td>1.19 ± 0.2 g/cm³</td><td>300 – 500 mg/10 min</td></tr>
                 </table>
             </div>
         </div>
+
+        <div class="category" id="pvc-oxygen">
+            <h1>PVC Regular Oxygen Scavenger</h1>
+            <div class="table-wrapper">
+                <table>
+                    <tr>
+                        <th>Nombre</th><th>Código</th><th>Tipo de Corona</th><th>Dureza</th><th>Densidad</th><th>Fluidez</th>
+                    </tr>
+                    <tr><td>SEMI PUFF "LIBRE DE FTALATOS" Oxygen Scavenger – Aprobado Prop. 65 California</td><td>ES-02SC-01-21 OXYGEN</td><td>PRY OFF</td><td>60 ± 3 Shore A</td><td>1.19 ± 0.2 g/cm³</td><td>100 – 300 mg/10 min</td></tr>
+                    <tr><td>PUFF TWIST "LIBRE DE FTALATOS" Oxygen Scavenger – Aprobado Prop. 65 California</td><td>ES-02SC-17 EG-21 OXYGEN</td><td>TWIST OFF</td><td>60 ± 3 Shore A</td><td>1.19 ± 0.2 g/cm³</td><td>300 – 500 mg/10 min</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="category" id="pvc-free">
+            <h1>PVC Free</h1>
+            <div class="table-wrapper">
+                <table>
+                    <tr>
+                        <th>Nombre</th><th>Código</th><th>Tipo de Corona</th><th>Dureza</th><th>Densidad</th><th>Fluidez</th>
+                    </tr>
+                    <tr><td>PVC FREE PRY CC-16</td><td>ES-02SC-19-CC-16</td><td>PRY OFF</td><td>90 ± 3 Shore A</td><td>0.75 ± 0.2 g/cm³</td><td>7 – 10 g/10 min</td></tr>
+                    <tr><td>PVC FREE TWIST CC-17</td><td>ES-02SC-19-CC-17</td><td>TWIST OFF</td><td>80 ± 3 Shore A</td><td>0.75 ± 0.2 g/cm³</td><td>7 – 10 g/10 min</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="category" id="pvc-free-oxygen">
+            <h1>PVC Free Oxygen Scavenger</h1>
+            <div class="table-wrapper">
+                <table>
+                    <tr>
+                        <th>Nombre</th><th>Código</th><th>Tipo de Corona</th><th>Dureza</th><th>Densidad</th><th>Fluidez</th>
+                    </tr>
+                    <tr><td>PVC FREE PRY Oxygen Scavenger</td><td>ES-02SC-19-CC-18 PRY OXYGEN</td><td>PRY OFF</td><td>90 ± 3 Shore A</td><td>0.75 ± 0.2 g/cm³</td><td>7 – 10 g/10 min</td></tr>
+                    <tr><td>PVC FREE TWIST Oxygen Scavenger</td><td>ES-02SC-19-CC-19 TWIST OXYGEN</td><td>TWIST OFF</td><td>80 ± 3 Shore A</td><td>0.75 ± 0.2 g/cm³</td><td>7 – 10 g/10 min</td></tr>
+                </table>
+            </div>
+        </div>
+
     </div>
 
+    <!-- SOBRE NOSOTROS -->
     <div id="sobre-nosotros" class="pagina oculto">
         <h1>Sobre Nosotros</h1>
         <p>Con más de 20 años de experiencia en la industria, hemos construido una sólida reputación en la fabricación de compuestos químicos plastificantes para liners de corcholatas.</p>
@@ -83,30 +107,40 @@
         <img src="https://raw.githubusercontent.com/ljfdz15/capliner/refs/heads/main/imagenes/nosotros.jpg" alt="Equipo de trabajo">
     </div>
 
+    <!-- CONTACTO -->
     <div id="contacto" class="pagina oculto">
         <h1>Contáctanos</h1>
-        <div class="contacto">
-            <p1><strong>Nombre:</strong> Luis Javier Fernández Barragán</p1>
-            <p1><strong>Posición:</strong> Presidente del Consejo de Administración</p1>
-            <p1><strong>Correo:</strong> ljfernandezb@capliner.com.mx</p1>
-            <p1><strong>Número Celular:</strong> +52 55 54330462</p1>
-        </div>
+        <div class="contactos-grid">
 
-        <div class="contacto">
-            <p1><strong>Nombre:</strong> Prisciliano Zúñiga</p1>
-            <p1><strong>Posición:</strong> Director General</p1>
-            <p1><strong>Correo:</strong> prisciliano.zuniga@capliner.com.mx</p1>
-            <p1><strong>Número Celular:</strong> +52 33 38123556</p1>
-        </div>
+            <div class="contacto">
+                <div class="nombre">Luis Javier Fernández Barragán</div>
+                <div class="cargo">Presidente del Consejo de Administración</div>
+                <div class="info-line"><i class="fa-solid fa-envelope"></i> ljfernandezb@capliner.com.mx</div>
+                <div class="info-line"><i class="fa-solid fa-phone"></i> +52 55 5433 0462</div>
+            </div>
 
-        <div class="contacto">
-            <p1><strong>Nombre:</strong> Mario Castañón</p1>
-            <p1><strong>Posición:</strong> Líder de Desarrollo y Producción</p1>
-            <p1><strong>Correo:</strong> aseguramientocal2@gmail.com</p1>
-            <p1><strong>Número Celular:</strong> +52 33 13124546</p1>
+            <div class="contacto">
+                <div class="nombre">Prisciliano Zúñiga</div>
+                <div class="cargo">Director General</div>
+                <div class="info-line"><i class="fa-solid fa-envelope"></i> prisciliano.zuniga@capliner.com.mx</div>
+                <div class="info-line"><i class="fa-solid fa-phone"></i> +52 33 3812 3556</div>
+            </div>
+
+            <div class="contacto">
+                <div class="nombre">Mario Castañón</div>
+                <div class="cargo">Líder de Desarrollo y Producción</div>
+                <div class="info-line"><i class="fa-solid fa-envelope"></i> aseguramientocal2@gmail.com</div>
+                <div class="info-line"><i class="fa-solid fa-phone"></i> +52 33 1312 4546</div>
+            </div>
+
         </div>
         <img src="https://images.pexels.com/photos/5538168/pexels-photo-5538168.jpeg" alt="Atención al cliente">
     </div>
+
+    <footer>
+        &copy; 2025 CAPLINER de México &mdash; Jalisco, México
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
