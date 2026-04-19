@@ -1,33 +1,39 @@
-console.log("script.js is loading correctly!");
-function mostrarPagina(pagina) {
-            document.querySelectorAll('.pagina').forEach(p => p.classList.add('oculto'));
-            document.getElementById(pagina).classList.remove('oculto');
-        }
-document.addEventListener("DOMContentLoaded", function() {
-    // Mostrar la primera categoría por defecto
-    document.querySelector(".category").classList.add("active");
+document.addEventListener("DOMContentLoaded", function () {
 
-    // Obtener todos los enlaces de navegación
-    const navLinks = document.querySelectorAll("nav ul li a");
+    // Hamburger toggle
+    const menuBtn = document.getElementById("menuBtn");
+    const navbar  = document.querySelector(".navbar");
 
-    navLinks.forEach(link => {
-        link.addEventListener("click", function(event) {
-            event.preventDefault(); // Evita el salto automático de la página
+    menuBtn.addEventListener("click", function () {
+        navbar.classList.toggle("open");
+    });
 
-            // Obtener el ID de la categoría seleccionada
-            const targetId = this.getAttribute("href").substring(1);
-
-            // Ocultar todas las categorías
-            document.querySelectorAll(".category").forEach(category => {
-                category.classList.remove("active");
-            });
-
-            // Mostrar solo la categoría seleccionada
-            document.getElementById(targetId).classList.add("active");
+    // Close menu on link click (mobile)
+    navbar.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+            navbar.classList.remove("open");
         });
     });
+
 });
+
 function mostrarPagina(pagina) {
-            document.querySelectorAll('.pagina').forEach(p => p.classList.add('oculto'));
-            document.getElementById(pagina).classList.remove('oculto');
+    // Hide all pages
+    document.querySelectorAll(".pagina").forEach(function (p) {
+        p.classList.add("oculto");
+    });
+
+    // Show target
+    document.getElementById(pagina).classList.remove("oculto");
+
+    // Highlight active nav link
+    document.querySelectorAll(".navbar a").forEach(function (a) {
+        a.classList.remove("activo");
+        if (a.getAttribute("onclick") && a.getAttribute("onclick").includes("'" + pagina + "'")) {
+            a.classList.add("activo");
         }
+    });
+
+    // Scroll to top smoothly
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
