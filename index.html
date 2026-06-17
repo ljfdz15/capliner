@@ -1,146 +1,1155 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAPLINER de México</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAP LINER — El sello que protege cada gota</title>
+<style>
+:root {
+  --brand:    #F34213;
+  --brand-dk: #c73310;
+  --dark:     #1a1a1a;
+  --mid:      #444;
+  --light:    #f5f5f5;
+  --white:    #ffffff;
+  --shadow:   0 4px 20px rgba(0,0,0,.10);
+  --radius:   12px;
+  --font:     'Segoe UI', Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--white);
+  color: var(--dark);
+  overflow-x: hidden;
+}
+
+/* ── NAVBAR ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--dark);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5vw;
+  height: 64px;
+  box-shadow: 0 2px 20px rgba(0,0,0,.4);
+  transition: background .3s;
+}
+.nav-logo {
+  text-decoration: none;
+  display: flex; align-items: center;
+}
+.nav-logo img { height: 38px; width: auto; display: block; }
+.footer-logo img { height: 44px; width: auto; display: block; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: rgba(255,255,255,.75); text-decoration: none;
+  font-size: .9rem; font-weight: 500; letter-spacing: .04em;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-cta {
+  background: var(--brand); color: var(--white) !important;
+  padding: .45rem 1.2rem; border-radius: 50px;
+  font-weight: 700 !important; transition: background .2s !important;
+}
+.nav-cta:hover { background: var(--brand-dk) !important; color: var(--white) !important; }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.hamburger span { width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
+
+/* ── HERO ── */
+#hero {
+  position: relative; height: 100vh; min-height: 600px;
+  background: var(--dark);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+#hero canvas {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+}
+.hero-content {
+  position: relative; z-index: 2;
+  text-align: center; padding: 2rem;
+  max-width: 800px;
+}
+.hero-eyebrow {
+  display: inline-block;
+  font-size: .9rem; font-weight: 700; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--brand);
+  margin-bottom: 1.4rem;
+  padding: .4rem 1.1rem; border: 1px solid rgba(243,66,19,.4);
+  border-radius: 50px;
+}
+.hero-title {
+  font-size: clamp(3.2rem, 7vw, 6rem);
+  font-weight: 900; color: var(--white);
+  line-height: 1.05; letter-spacing: -.02em;
+  margin-bottom: 1.4rem;
+  text-wrap: balance;
+}
+.hero-title em { color: var(--brand); font-style: normal; }
+.hero-sub {
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  color: rgba(255,255,255,.6);
+  margin-bottom: 2.5rem; line-height: 1.7;
+}
+
+/* ── ABOUT / MISSION VISION ── */
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem;
+}
+@media(max-width:768px){ .about-grid { grid-template-columns: 1fr; } }
+
+.values-grid {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 1.2rem; margin-bottom: 3rem;
+}
+@media(max-width:900px){ .values-grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:480px){ .values-grid { grid-template-columns: 1fr; } }
+
+.value-card {
+  padding: 1.5rem; border-radius: var(--radius);
+  background: var(--white); border-top: 3px solid var(--brand);
+  box-shadow: var(--shadow); text-align: center;
+}
+.value-card-icon { font-size: 1.8rem; margin-bottom: .6rem; }
+.value-card-title { font-size: .9rem; font-weight: 800; margin-bottom: .4rem; }
+.value-card-text { font-size: .78rem; color: var(--mid); line-height: 1.5; }
+
+.history-strip {
+  display: flex; position: relative;
+  margin-top: 2.5rem; padding-bottom: 1.5rem;
+  border-top: none;
+}
+.history-strip::before {
+  content: ''; position: absolute;
+  top: 66px; left: 8%; right: 8%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--brand), rgba(243,66,19,.3), rgba(243,66,19,.1));
+  z-index: 0;
+}
+.hstep {
+  flex: 1; text-align: center; position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: center;
+}
+.hstep-icon {
+  width: 44px; height: 44px;
+  background: var(--white); border: 2px solid rgba(243,66,19,.25);
+  border-radius: 11px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--brand); margin-bottom: 10px;
+  transition: background .25s, border-color .25s;
+}
+.hstep:hover .hstep-icon { background: var(--brand); border-color: var(--brand); color: var(--white); }
+.hstep-icon svg { width: 20px; height: 20px; }
+.hstep-year {
+  display: inline-block; background: var(--brand); color: var(--white);
+  font-size: .75rem; font-weight: 900; padding: .25rem .75rem; border-radius: 50px;
+  margin-bottom: .8rem;
+  box-shadow: 0 2px 10px rgba(243,66,19,.4);
+}
+.hstep-text { font-size: .75rem; color: var(--mid); line-height: 1.45; max-width: 108px; margin: 0 auto; }
+
+.quality-banner {
+  background: var(--dark); color: var(--white);
+  border-radius: var(--radius); padding: 2rem 2.5rem;
+  display: flex; align-items: center; gap: 1.5rem; margin-top: 2rem;
+}
+.quality-banner-icon {
+  width: 52px; height: 52px; flex-shrink: 0;
+  background: rgba(243,66,19,.15); border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--brand);
+}
+.quality-banner-text { font-size: .9rem; line-height: 1.7; color: rgba(255,255,255,.75); }
+.quality-banner-text strong { color: var(--white); }
+
+.hero-cta {
+  display: inline-block;
+  background: var(--brand); color: var(--white);
+  text-decoration: none; font-weight: 700; font-size: 1rem;
+  padding: .85rem 2.2rem; border-radius: 50px;
+  transition: background .2s, transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 24px rgba(243,66,19,.45);
+  letter-spacing: .04em;
+}
+.hero-cta:hover {
+  background: var(--brand-dk);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(243,66,19,.55);
+}
+.hero-scroll {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  z-index: 2;
+  display: flex; flex-direction: column; align-items: center; gap: .5rem;
+  color: rgba(255,255,255,.4); font-size: .75rem; letter-spacing: .1em;
+  animation: float 2s ease-in-out infinite;
+}
+.hero-scroll svg { animation: bounce 2s ease-in-out infinite; }
+@keyframes float { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-6px)} }
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(4px)} }
+
+/* ── SECTION BASE ── */
+section { padding: clamp(5rem, 10vw, 8rem) 5vw; }
+.section-eyebrow {
+  display: inline-block; font-size: .75rem; font-weight: 700;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--brand); margin-bottom: .8rem;
+}
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900; line-height: 1.1; letter-spacing: -.02em;
+  margin-bottom: 1rem; text-wrap: balance;
+}
+.section-sub {
+  font-size: 1.05rem; color: var(--mid);
+  max-width: 560px; line-height: 1.7; margin-bottom: 3rem;
+}
+
+/* scroll reveal */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity .7s ease, transform .7s ease; }
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-right { opacity: 0; transform: translateX(40px); transition: opacity .7s ease, transform .7s ease; }
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+/* ── LINER EXPLAINER ── */
+#liner { background: var(--white); }
+.liner-layout {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+  align-items: center; max-width: 1200px; margin: 0 auto;
+}
+@media(max-width:768px){ .liner-layout { grid-template-columns: 1fr; gap: 3rem; } }
+
+/* 3D cross-section */
+.crosssection-wrap {
+  display: flex; justify-content: center; align-items: center;
+  perspective: 600px;
+}
+.crosssection {
+  width: 260px;
+  transform-style: preserve-3d;
+  animation: tilt3d 6s ease-in-out infinite;
+}
+@keyframes tilt3d {
+  0%,100% { transform: rotateX(12deg) rotateY(-8deg); }
+  50%      { transform: rotateX(8deg) rotateY(8deg); }
+}
+.cs-layer {
+  border-radius: var(--radius);
+  margin-bottom: 6px;
+  display: flex; align-items: center;
+  padding: 14px 18px; gap: 12px;
+  font-size: .85rem; font-weight: 600;
+  box-shadow: var(--shadow);
+  transition: transform .3s;
+}
+.cs-layer:hover { transform: translateX(8px); }
+.cs-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.cs-corcholata { background: #c8c8c8; color: var(--dark); }
+.cs-liner      { background: var(--brand); color: var(--white); font-weight: 800; }
+.cs-liner .cs-dot { background: var(--white); }
+.cs-seal       { background: rgba(243,66,19,.12); color: var(--dark); border: 1px solid rgba(243,66,19,.3); }
+.cs-glass      { background: #dbeeff; color: #1a3a5c; }
+.cs-label { flex: 1; }
+.cs-desc { font-size: .7rem; font-weight: 400; color: inherit; opacity: .7; }
+
+.cs-divider {
+  display: flex; align-items: center; gap: .75rem; margin: 14px 0 8px;
+}
+.cs-divider::before, .cs-divider::after {
+  content: ''; flex: 1; height: 1px; background: rgba(0,0,0,.12);
+}
+.cs-divider span {
+  font-size: .62rem; font-weight: 800; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--mid); white-space: nowrap;
+}
+.cs-other {
+  background: rgba(0,0,0,.03); color: var(--dark);
+  border: 1px dashed rgba(0,0,0,.14);
+}
+
+.stats-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem; margin-top: 3rem;
+}
+.stat-card {
+  text-align: center; padding: 1.5rem 1rem;
+  background: var(--light); border-radius: var(--radius);
+}
+.stat-num {
+  font-size: 2.4rem; font-weight: 900; color: var(--brand);
+  line-height: 1; display: block; margin-bottom: .3rem;
+}
+.stat-label { font-size: .8rem; color: var(--mid); font-weight: 600; letter-spacing: .04em; }
+
+/* ── PRODUCTS ── */
+#products { background: var(--light); }
+.products-inner { max-width: 1200px; margin: 0 auto; }
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+.product-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem 1.8rem;
+  border-top: 4px solid transparent;
+  transition: border-color .25s, transform .25s, box-shadow .25s;
+  cursor: default;
+}
+.product-card:hover {
+  border-color: var(--brand);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0,0,0,.13);
+}
+.product-icon {
+  width: 52px; height: 52px; border-radius: 12px;
+  background: rgba(243,66,19,.08);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.2rem;
+}
+.product-icon svg { width: 26px; height: 26px; }
+.product-name { font-size: 1.15rem; font-weight: 800; margin-bottom: .5rem; color: var(--dark); }
+.product-desc { font-size: .88rem; color: var(--mid); line-height: 1.6; }
+.product-tag {
+  display: inline-block; margin-top: 1rem;
+  font-size: .7rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--brand);
+  padding: .2rem .7rem; border: 1px solid rgba(243,66,19,.3);
+  border-radius: 50px;
+}
+
+/* ── PROCESS ── */
+#process { background: var(--dark); overflow: hidden; }
+.process-inner { max-width: 1100px; margin: 0 auto; }
+.process-inner .section-title { color: var(--white); }
+.process-inner .section-eyebrow { color: var(--brand); }
+.process-inner .section-sub { color: rgba(255,255,255,.5); }
+
+.timeline {
+  display: flex; align-items: flex-start; gap: 0;
+  position: relative; margin-top: 1rem;
+}
+.timeline-line {
+  position: absolute; top: 28px; left: 28px; right: 28px; height: 3px;
+  background: rgba(255,255,255,.08); border-radius: 2px; z-index: 0;
+}
+.timeline-progress {
+  height: 100%; width: 0; border-radius: 2px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-dk));
+  transition: width 1.5s cubic-bezier(.4,0,.2,1);
+}
+.timeline-step {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  text-align: center; position: relative; z-index: 1;
+  padding: 0 .5rem;
+}
+.step-node {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--mid); border: 3px solid rgba(255,255,255,.1);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1rem; transition: all .4s;
+  font-size: 1.2rem;
+}
+.step-node.active {
+  background: var(--brand); border-color: var(--brand);
+  box-shadow: 0 0 24px rgba(243,66,19,.6);
+}
+.step-label { font-size: .8rem; font-weight: 700; color: rgba(255,255,255,.5); transition: color .4s; text-transform: uppercase; letter-spacing: .05em; }
+.step-label.active { color: var(--white); }
+.step-sub { font-size: .72rem; color: rgba(255,255,255,.3); margin-top: .3rem; }
+
+@media(max-width:600px){
+  .timeline { flex-direction: column; gap: 1rem; }
+  .timeline-line { display: none; }
+}
+
+/* ── WHY ── */
+#why { background: var(--white); }
+.why-inner { max-width: 1100px; margin: 0 auto; }
+.pillars { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+@media(max-width:700px){ .pillars { grid-template-columns: 1fr; } }
+
+.pillar {
+  padding: 2.5rem 2rem;
+  border-radius: var(--radius);
+  background: var(--light);
+  transition: box-shadow .3s, transform .3s;
+}
+.pillar:hover { box-shadow: var(--shadow); transform: translateY(-4px); }
+.pillar-icon {
+  width: 60px; height: 60px;
+  background: rgba(243,66,19,.1);
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: background .3s;
+}
+.pillar:hover .pillar-icon { background: var(--brand); }
+.pillar:hover .pillar-icon svg { color: var(--white); }
+.pillar-icon svg { color: var(--brand); width: 28px; height: 28px; transition: color .3s; }
+.pillar-title { font-size: 1.15rem; font-weight: 800; margin-bottom: .6rem; }
+.pillar-text { font-size: .9rem; color: var(--mid); line-height: 1.7; }
+
+
+/* ── CONTACT ── */
+#contact { background: var(--dark); }
+.contact-inner { max-width: 1100px; margin: 0 auto; }
+.contact-inner .section-title { color: var(--white); }
+.contact-inner .section-sub { color: rgba(255,255,255,.5); }
+.contact-grid {
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 2.5rem; align-items: start;
+}
+@media(max-width:1024px){ .contact-grid { grid-template-columns: 1fr 1fr; gap: 2rem; } }
+@media(max-width:640px){ .contact-grid { grid-template-columns: 1fr; gap: 2rem; } }
+
+.contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media(max-width:480px){ .form-row { grid-template-columns: 1fr; } }
+
+.form-group { display: flex; flex-direction: column; gap: .4rem; }
+.form-group label { font-size: .8rem; font-weight: 700; color: rgba(255,255,255,.6); letter-spacing: .06em; text-transform: uppercase; }
+.form-group input, .form-group textarea, .form-group select {
+  background: rgba(255,255,255,.06);
+  border: 1px solid var(--mid);
+  border-radius: 8px;
+  color: var(--white);
+  font-family: var(--font);
+  font-size: .95rem;
+  padding: .75rem 1rem;
+  transition: border-color .2s, box-shadow .2s;
+  outline: none;
+}
+.form-group input::placeholder, .form-group textarea::placeholder {
+  color: rgba(255,255,255,.25);
+}
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(243,66,19,.18);
+}
+.form-group select option { background: var(--dark); color: var(--white); }
+.form-group textarea { resize: vertical; min-height: 120px; }
+.btn-submit {
+  background: var(--brand); color: var(--white);
+  border: none; border-radius: 50px;
+  padding: .95rem 2.5rem; font-weight: 800; font-size: 1rem;
+  cursor: pointer; transition: background .2s, transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 20px rgba(243,66,19,.4);
+  letter-spacing: .04em; align-self: flex-start;
+}
+.btn-submit:hover {
+  background: var(--brand-dk);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(243,66,19,.5);
+}
+.jalisco-wrap {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
+}
+.jalisco-wrap img { width: 100%; border-radius: 8px; display: block; }
+.contact-info { display: flex; flex-direction: column; gap: 1.2rem; }
+.info-row {
+  display: flex; align-items: flex-start; gap: 1rem;
+  color: rgba(255,255,255,.7); font-size: .9rem; line-height: 1.5;
+}
+.info-icon {
+  width: 36px; height: 36px; background: rgba(243,66,19,.15);
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: var(--brand);
+}
+.info-icon svg { width: 16px; height: 16px; }
+
+/* ── FOOTER ── */
+footer {
+  background: #111;
+  padding: 2.5rem 5vw;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+.footer-logo { display: flex; align-items: center; }
+.footer-copy { font-size: .8rem; color: rgba(255,255,255,.3); }
+
+/* ── MOBILE NAV ── */
+@media(max-width:768px){
+  .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0;
+    background: var(--dark); flex-direction: column; align-items: flex-start;
+    padding: 1.5rem 5vw; gap: 1.2rem; border-top: 1px solid rgba(255,255,255,.08); }
+  .nav-links.open { display: flex; }
+  .hamburger { display: flex; }
+}
+
+/* ── PRODUCT LIST & SPECS ── */
+.product-list {
+  margin: .8rem 0 .4rem;
+  padding: 0; list-style: none;
+  display: flex; flex-direction: column; gap: .35rem;
+}
+.product-list li { font-size: .78rem; color: var(--mid); display: flex; align-items: baseline; gap: .5rem; flex-wrap: wrap; }
+.p-code {
+  font-family: monospace; font-size: .72rem; font-weight: 700;
+  color: var(--brand); background: rgba(243,66,19,.08);
+  padding: .1rem .45rem; border-radius: 4px;
+  white-space: nowrap; flex-shrink: 0;
+}
+.product-specs-row {
+  display: flex; gap: 1rem; margin: .6rem 0 .2rem;
+  font-size: .75rem; font-weight: 700; color: var(--mid); flex-wrap: wrap;
+}
+.product-specs-row span::before { content: '◆ '; color: var(--brand); font-size: .6rem; }
+
+/* ── CONTACT PERSONS ── */
+.contact-person {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.4rem;
+}
+.contact-person-name { font-size: .95rem; font-weight: 800; color: var(--white); margin-bottom: .2rem; }
+.contact-person-role { font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--brand); margin-bottom: .7rem; }
+.contact-person-details { display: flex; flex-direction: column; gap: .4rem; }
+.contact-person-link {
+  color: rgba(255,255,255,.6); text-decoration: none;
+  font-size: .83rem; display: flex; align-items: center; gap: .5rem;
+  transition: color .2s;
+}
+.contact-person-link:hover { color: var(--white); }
+</style>
 </head>
 <body>
 
-    <div class="header">
-        CAP LINER
-        <div class="icono">
-            <img src="https://raw.githubusercontent.com/ljfdz15/capliner/refs/heads/main/imagenes/logo_capliner_v1_blanco.png" alt="Logo Cap Liner">
+<!-- NAVBAR -->
+<nav>
+  <a class="nav-logo" href="#hero">
+    <img src="imagenes/logo_capliner_v1_blanco.png" alt="Cap Liner de México">
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#liner">Solución</a></li>
+    <li><a href="#products">Productos</a></li>
+    <li><a href="#process">Proceso</a></li>
+    <li><a href="#about">Nosotros</a></li>
+    <li><a href="#why">¿Por qué elegirnos?</a></li>
+    <li><a href="#contact" class="nav-cta">Contacto</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="particles"></canvas>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Jalisco · México · Manufactura de Precisión</span>
+    <h1 class="hero-title">El Sello que Protege<br><em>Cada Gota.</em></h1>
+    <p class="hero-sub">Compuestos químicos plastificantes de alta calidad para liners de corcholatas, con más de 20 años de experiencia.<br>El componente invisible que garantiza cada producto que consumes.</p>
+    <a href="#contact" class="hero-cta">Solicitar muestra →</a>
+  </div>
+  <div class="hero-scroll">
+    <span>SCROLL</span>
+    <svg width="16" height="20" viewBox="0 0 16 20" fill="none">
+      <path d="M8 0v16M1 10l7 8 7-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</section>
+
+<!-- LINER EXPLAINER -->
+<section id="liner">
+  <div class="liner-layout">
+    <div class="reveal-left">
+      <span class="section-eyebrow">Anatomía de una tapa</span>
+      <h2 class="section-title">El liner que no ves,<br>pero que importa.</h2>
+      <p class="section-sub">Entre la corcholata y el vidrio existe un disco de precisión que define la calidad, seguridad e integridad de todo lo que hay adentro. Nosotros fabricamos el compuesto plastificante que lo hace posible.</p>
+
+      <div class="stats-grid">
+        <div class="stat-card reveal" style="transition-delay:.1s">
+          <span class="stat-num" data-target="500">0</span>
+          <span class="stat-label">Millones de tapas / año</span>
         </div>
+        <div class="stat-card reveal" style="transition-delay:.2s">
+          <span class="stat-num" data-target="20">0</span>
+          <span class="stat-label">Años de experiencia</span>
+        </div>
+        <div class="stat-card reveal" style="transition-delay:.3s">
+          <span class="stat-num" data-target="12">0</span>
+          <span class="stat-label">Estados con presencia</span>
+        </div>
+      </div>
     </div>
 
-    <nav class="navbar">
-        <button class="hamburger" id="menuBtn" aria-label="Menú">
-            <i class="fa-solid fa-bars"></i>
-        </button>
-        <a href="#" onclick="mostrarPagina('inicio')">Inicio</a>
-        <a href="#" onclick="mostrarPagina('productos')">Productos</a>
-        <a href="#" onclick="mostrarPagina('sobre-nosotros')">Sobre Nosotros</a>
-        <a href="#" onclick="mostrarPagina('contacto')">Contáctanos</a>
-    </nav>
+    <div class="crosssection-wrap reveal-right">
+      <div class="crosssection">
+        <div class="cs-divider"><span>Otros usos</span></div>
+        <div class="cs-layer cs-other">
+          <div class="cs-dot" style="background:#5a8fc2"></div>
+          <div class="cs-label">
+            <div>Perfiles extruidos</div>
+            <div class="cs-desc">Marcos de ventana, puertas y construcción</div>
+          </div>
+        </div>
+        <div class="cs-layer cs-other">
+          <div class="cs-dot" style="background:#4e9e70"></div>
+          <div class="cs-label">
+            <div>Compuestos de inyección</div>
+            <div class="cs-desc">Piezas plásticas moldeadas de precisión</div>
+          </div>
+        </div>
+        <div class="cs-layer cs-other">
+          <div class="cs-dot" style="background:#b07030"></div>
+          <div class="cs-label">
+            <div>Industria automotriz</div>
+            <div class="cs-desc">Sellos, juntas, burletes y ductos</div>
+          </div>
+        </div>
+        <div class="cs-layer cs-other">
+          <div class="cs-dot" style="background:#8060aa"></div>
+          <div class="cs-label">
+            <div>Calzado</div>
+            <div class="cs-desc">Suelas y plantillas de PVC flexible</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- INICIO -->
-    <div id="inicio" class="pagina">
-        <h1>Bienvenido a CAP LINER</h1>
-        <p>Somos una empresa mexicana ubicada en el estado de Jalisco, especializada en la fabricación de compuestos químicos plastificantes de alta calidad, utilizados principalmente en liners de corcholatas.</p>
-        <p>Nos enfocamos en ofrecer soluciones seguras y eficientes, incluyendo opciones libres de PVC que cumplen con la normativa de la Propuesta 65 de California, garantizando productos seguros para el consumidor final.</p>
-        <p>Nuestro compromiso con la excelencia no solo se refleja en nuestros productos, sino también en nuestro servicio al cliente.</p>
-        <p>Brindamos asesoría especializada, tiempos de entrega confiables y una atención personalizada que nos distingue en el mercado. Confía en nosotros para brindarte la mejor solución en compuestos químicos.</p>
-        <img src="https://raw.githubusercontent.com/ljfdz15/capliner/refs/heads/main/imagenes/todo_el_team.jpg" alt="Equipo Cap Liner">
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="products-inner">
+    <div class="reveal" style="text-align:center; margin-bottom:3.5rem">
+      <span class="section-eyebrow">Catálogo</span>
+      <h2 class="section-title">Nuestros liners</h2>
+      <p class="section-sub" style="margin:0 auto">Cada fórmula diseñada para industrias específicas con requerimientos distintos de temperatura, presión y compatibilidad química.</p>
+    </div>
+    <div class="products-grid">
+
+      <div class="product-card reveal" style="transition-delay:.05s">
+        <div class="product-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/>
+          </svg>
+        </div>
+        <div class="product-name">PVC Regular</div>
+        <div class="product-desc">Compuesto estándar de PVC plastificado para corcholatas. Disponible con DOP o libre de ftalatos (Aprobado Prop. 65 California).</div>
+        <ul class="product-list">
+          <li><span class="p-code">ES-02SC-01</span> SEMI PUFF DOP</li>
+          <li><span class="p-code">ES-02SC-01-20</span> SEMI PUFF Libre de Ftalatos</li>
+          <li><span class="p-code">ES-02SC-17 EG-2</span> PUFF TWIST DOP</li>
+          <li><span class="p-code">ES-02SC-17 EG-20</span> PUFF TWIST Libre de Ftalatos</li>
+        </ul>
+        <div class="product-specs-row">
+          <span>60 ± 3 Shore A</span><span>1.19 ± 0.2 g/cm³</span>
+        </div>
+        <span class="product-tag">PRY OFF · TWIST OFF</span>
+      </div>
+
+      <div class="product-card reveal" style="transition-delay:.1s">
+        <div class="product-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2" stroke-linecap="round">
+            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>
+          </svg>
+        </div>
+        <div class="product-name">PVC Regular Oxygen Scavenger</div>
+        <div class="product-desc">Incorpora tecnología absorbedora de oxígeno para proteger productos sensibles. Libre de ftalatos, aprobado Prop. 65 California.</div>
+        <ul class="product-list">
+          <li><span class="p-code">ES-02SC-01-21 OXYGEN</span> SEMI PUFF Lib. Ftalatos O₂</li>
+          <li><span class="p-code">ES-02SC-17 EG-21 OXYGEN</span> PUFF TWIST Lib. Ftalatos O₂</li>
+        </ul>
+        <div class="product-specs-row">
+          <span>60 ± 3 Shore A</span><span>1.19 ± 0.2 g/cm³</span>
+        </div>
+        <span class="product-tag">Prop. 65 · PRY OFF · TWIST OFF</span>
+      </div>
+
+      <div class="product-card reveal" style="transition-delay:.15s">
+        <div class="product-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2" stroke-linecap="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div class="product-name">PVC Free</div>
+        <div class="product-desc">Formulación sin PVC para aplicaciones que requieren mayor rigidez y menor densidad. Ideal donde se busca eliminar compuestos clorados.</div>
+        <ul class="product-list">
+          <li><span class="p-code">ES-02SC-19-CC-16</span> PVC FREE PRY CC-16</li>
+          <li><span class="p-code">ES-02SC-19-CC-17</span> PVC FREE TWIST CC-17</li>
+        </ul>
+        <div class="product-specs-row">
+          <span>80–90 ± 3 Shore A</span><span>0.75 ± 0.2 g/cm³</span>
+        </div>
+        <span class="product-tag">Sin PVC · PRY OFF · TWIST OFF</span>
+      </div>
+
+      <div class="product-card reveal" style="transition-delay:.2s">
+        <div class="product-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2" stroke-linecap="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="product-name">PVC Free Oxygen Scavenger</div>
+        <div class="product-desc">Combina PVC Free con tecnología absorbedora de oxígeno. Máxima protección para envasado sensible libre de cloruros.</div>
+        <ul class="product-list">
+          <li><span class="p-code">ES-02SC-19-CC-18</span> PVC FREE PRY O₂</li>
+          <li><span class="p-code">ES-02SC-19-CC-19</span> PVC FREE TWIST O₂</li>
+        </ul>
+        <div class="product-specs-row">
+          <span>80–90 ± 3 Shore A</span><span>0.75 ± 0.2 g/cm³</span>
+        </div>
+        <span class="product-tag">Sin PVC · Prop. 65 · PRY OFF · TWIST OFF</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="process-inner">
+    <span class="section-eyebrow">Cómo lo hacemos</span>
+    <h2 class="section-title">Del compuesto al sello perfecto</h2>
+    <p class="section-sub">Proceso integrado en Jalisco. Control total desde la formulación hasta la entrega en planta.</p>
+
+    <div style="position:relative; margin-top:3rem" class="reveal">
+      <div class="timeline-line"><div class="timeline-progress" id="timelineProgress"></div></div>
+      <div class="timeline">
+        <div class="timeline-step">
+          <div class="step-node active" id="node0">⚗️</div>
+          <div class="step-label active" id="lbl0">Materia Prima</div>
+          <div class="step-sub">Polímeros certificados</div>
+        </div>
+        <div class="timeline-step">
+          <div class="step-node" id="node1">⚙️</div>
+          <div class="step-label" id="lbl1">Compoundeo</div>
+          <div class="step-sub">Fórmula propietaria</div>
+        </div>
+        <div class="timeline-step">
+          <div class="step-node" id="node2">🏭</div>
+          <div class="step-label" id="lbl2">Manufactura</div>
+          <div class="step-sub">Extrusión de precisión</div>
+        </div>
+        <div class="timeline-step">
+          <div class="step-node" id="node3">🔬</div>
+          <div class="step-label" id="lbl3">Control de Calidad</div>
+          <div class="step-sub">100% de lotes inspeccionados</div>
+        </div>
+        <div class="timeline-step">
+          <div class="step-node" id="node4">🚛</div>
+          <div class="step-label" id="lbl4">Entrega</div>
+          <div class="step-sub">Flota propia</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIÉNES SOMOS -->
+<section id="about" style="background:var(--light)">
+  <div style="max-width:1100px; margin:0 auto">
+    <div class="reveal" style="text-align:center; margin-bottom:3.5rem">
+      <span class="section-eyebrow">Nuestra esencia</span>
+      <h2 class="section-title">Quiénes Somos</h2>
+      <p class="section-sub" style="margin:0 auto">Fundada en Guadalajara, Jalisco en 1997, somos especialistas en la fabricación de compuestos para liners de plastitapas con presencia nacional.</p>
     </div>
 
-    <!-- PRODUCTOS -->
-    <div id="productos" class="pagina oculto">
-
-        <h1>Nuestros Productos</h1>
-
-        <div class="category" id="pvc-regular">
-            <h1>PVC Regular</h1>
-            <div class="table-wrapper">
-                <table>
-                    <tr>
-                        <th>Nombre</th><th>Código</th><th>Tipo de Corona</th><th>Dureza</th><th>Densidad</th><th>Fluidez</th>
-                    </tr>
-                    <tr><td>SEMI PUFF DOP</td><td>ES-02SC-01</td><td>PRY OFF</td><td>60 ± 3 Shore A</td><td>1.19 ± 0.2 g/cm³</td><td>100 – 300 mg/10 min</td></tr>
-                    <tr><td>SEMI PUFF "LIBRE DE FTALATOS" – Aprobado Prop. 65 California</td><td>ES-02SC-01-20</td><td>PRY OFF</td><td>60 ± 3 Shore A</td><td>1.19 ± 0.2 g/cm³</td><td>100 – 300 mg/10 min</td></tr>
-                    <tr><td>PUFF TWIST EG-2 DOP</td><td>ES-02SC-17 EG-2</td><td>TWIST OFF</td><td>60 ± 3 Shore A</td><td>1.19 ± 0.2 g/cm³</td><td>300 – 500 mg/10 min</td></tr>
-                    <tr><td>PUFF TWIST EG-20 "LIBRE DE FTALATOS" – Aprobado Prop. 65 California</td><td>ES-02SC-17 EG-20</td><td>TWIST OFF</td><td>60 ± 3 Shore A</td><td>1.19 ± 0.2 g/cm³</td><td>300 – 500 mg/10 min</td></tr>
-                </table>
-            </div>
+    <div class="about-grid">
+      <div class="pillar reveal-left">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
+          </svg>
         </div>
-
-        <div class="category" id="pvc-oxygen">
-            <h1>PVC Regular Oxygen Scavenger</h1>
-            <div class="table-wrapper">
-                <table>
-                    <tr>
-                        <th>Nombre</th><th>Código</th><th>Tipo de Corona</th><th>Dureza</th><th>Densidad</th><th>Fluidez</th>
-                    </tr>
-                    <tr><td>SEMI PUFF "LIBRE DE FTALATOS" Oxygen Scavenger – Aprobado Prop. 65 California</td><td>ES-02SC-01-21 OXYGEN</td><td>PRY OFF</td><td>60 ± 3 Shore A</td><td>1.19 ± 0.2 g/cm³</td><td>100 – 300 mg/10 min</td></tr>
-                    <tr><td>PUFF TWIST "LIBRE DE FTALATOS" Oxygen Scavenger – Aprobado Prop. 65 California</td><td>ES-02SC-17 EG-21 OXYGEN</td><td>TWIST OFF</td><td>60 ± 3 Shore A</td><td>1.19 ± 0.2 g/cm³</td><td>300 – 500 mg/10 min</td></tr>
-                </table>
-            </div>
+        <h3 class="pillar-title">Misión</h3>
+        <p class="pillar-text">La fabricación de compuestos de PVC flexible y rígido, dirigidos a fabricantes de envases y/o empaques para bebidas, perfiles extruidos y compuestos de inyección, cumpliendo con todos los requerimientos que demanda la industria para obtener un producto terminado de la mejor calidad.</p>
+      </div>
+      <div class="pillar reveal-right">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
         </div>
-
-        <div class="category" id="pvc-free">
-            <h1>PVC Free</h1>
-            <div class="table-wrapper">
-                <table>
-                    <tr>
-                        <th>Nombre</th><th>Código</th><th>Tipo de Corona</th><th>Dureza</th><th>Densidad</th><th>Fluidez</th>
-                    </tr>
-                    <tr><td>PVC FREE PRY CC-16</td><td>ES-02SC-19-CC-16</td><td>PRY OFF</td><td>90 ± 3 Shore A</td><td>0.75 ± 0.2 g/cm³</td><td>7 – 10 g/10 min</td></tr>
-                    <tr><td>PVC FREE TWIST CC-17</td><td>ES-02SC-19-CC-17</td><td>TWIST OFF</td><td>80 ± 3 Shore A</td><td>0.75 ± 0.2 g/cm³</td><td>7 – 10 g/10 min</td></tr>
-                </table>
-            </div>
-        </div>
-
-        <div class="category" id="pvc-free-oxygen">
-            <h1>PVC Free Oxygen Scavenger</h1>
-            <div class="table-wrapper">
-                <table>
-                    <tr>
-                        <th>Nombre</th><th>Código</th><th>Tipo de Corona</th><th>Dureza</th><th>Densidad</th><th>Fluidez</th>
-                    </tr>
-                    <tr><td>PVC FREE PRY Oxygen Scavenger</td><td>ES-02SC-19-CC-18 PRY OXYGEN</td><td>PRY OFF</td><td>90 ± 3 Shore A</td><td>0.75 ± 0.2 g/cm³</td><td>7 – 10 g/10 min</td></tr>
-                    <tr><td>PVC FREE TWIST Oxygen Scavenger</td><td>ES-02SC-19-CC-19 TWIST OXYGEN</td><td>TWIST OFF</td><td>80 ± 3 Shore A</td><td>0.75 ± 0.2 g/cm³</td><td>7 – 10 g/10 min</td></tr>
-                </table>
-            </div>
-        </div>
-
+        <h3 class="pillar-title">Visión</h3>
+        <p class="pillar-text">Ser una gran empresa nacional e internacional con estándares de calidad de clase mundial, manteniendo nuestro liderazgo a nivel nacional y orgullo de la industria de nuestro país, con productos vanguardistas que satisfagan las necesidades del mercado con innovación, calidad y servicio.</p>
+      </div>
     </div>
 
-    <!-- SOBRE NOSOTROS -->
-    <div id="sobre-nosotros" class="pagina oculto">
-        <h1>Sobre Nosotros</h1>
-        <p>Con más de 20 años de experiencia en la industria, hemos construido una sólida reputación en la fabricación de compuestos químicos plastificantes para liners de corcholatas.</p>
-        <p>A lo largo de nuestra trayectoria, hemos establecido relaciones con clientes y socios comerciales con presencia global, lo que nos ha permitido innovar constantemente y garantizar la calidad de nuestros productos.</p>
-        <p>Desarrollamos soluciones que cumplen con los más estrictos estándares internacionales, incluyendo opciones libres de PVC que cumplen con la Propuesta 65 de California.</p>
-        <p>Nuestro compromiso va más allá de los productos; brindamos un servicio al cliente de primer nivel, con atención personalizada y procesos eficientes para garantizar la mejor solución para cada necesidad.</p>
-        <img src="https://raw.githubusercontent.com/ljfdz15/capliner/refs/heads/main/imagenes/nosotros.jpg" alt="Equipo de trabajo">
-    </div>
-
-    <!-- CONTACTO -->
-    <div id="contacto" class="pagina oculto">
-        <h1>Contáctanos</h1>
-        <div class="contactos-grid">
-
-            <div class="contacto">
-                <div class="nombre">Luis Javier Fernández Barragán</div>
-                <div class="cargo">Presidente del Consejo de Administración</div>
-                <div class="info-line"><i class="fa-solid fa-envelope"></i> ljfernandezb@capliner.com.mx</div>
-                <div class="info-line"><i class="fa-solid fa-phone"></i> +52 55 5433 0462</div>
-            </div>
-
-            <div class="contacto">
-                <div class="nombre">Prisciliano Zúñiga</div>
-                <div class="cargo">Director General</div>
-                <div class="info-line"><i class="fa-solid fa-envelope"></i> prisciliano.zuniga@capliner.com.mx</div>
-                <div class="info-line"><i class="fa-solid fa-phone"></i> +52 33 3812 3556</div>
-            </div>
-
-            <div class="contacto">
-                <div class="nombre">Mario Castañón</div>
-                <div class="cargo">Líder de Desarrollo y Producción</div>
-                <div class="info-line"><i class="fa-solid fa-envelope"></i> aseguramientocal2@gmail.com</div>
-                <div class="info-line"><i class="fa-solid fa-phone"></i> +52 33 1312 4546</div>
-            </div>
-
+    <div class="reveal">
+      <h3 style="text-align:center; font-size:1.3rem; font-weight:800; margin-bottom:2rem; color:var(--dark)">Nuestros Valores</h3>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-card-icon">🤝</div>
+          <div class="value-card-title">Honestidad</div>
+          <div class="value-card-text">Conducta recta y honorable en cada actividad cotidiana, correspondiendo a la confianza depositada.</div>
         </div>
-        <img src="https://images.pexels.com/photos/5538168/pexels-photo-5538168.jpeg" alt="Atención al cliente">
+        <div class="value-card">
+          <div class="value-card-icon">🌟</div>
+          <div class="value-card-title">Respeto</div>
+          <div class="value-card-text">Relaciones humanas cordiales con clientes, proveedores y colaboradores en todo momento.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-card-icon">🏆</div>
+          <div class="value-card-title">Calidad</div>
+          <div class="value-card-text">Trabajo oportuno y sin errores, con creatividad y esfuerzo para resultados de excelencia.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-card-icon">💎</div>
+          <div class="value-card-title">Lealtad</div>
+          <div class="value-card-text">Fidelidad, compromiso y orgullo en el desempeño cotidiano de nuestras actividades.</div>
+        </div>
+      </div>
     </div>
 
-    <footer>
-        &copy; 2025 CAPLINER de México &mdash; Jalisco, México
-    </footer>
+    <div class="reveal">
+      <h3 style="text-align:center; font-size:1.3rem; font-weight:800; margin-bottom:2rem; color:var(--dark)">Historia y Raíces</h3>
+      <div class="history-strip">
+        <div class="hstep">
+          <div class="hstep-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="15" rx="1"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/>
+            </svg>
+          </div>
+          <div class="hstep-year">1936</div>
+          <div class="hstep-text">Fundación de empresa de corcholatas de corcho y lata</div>
+        </div>
+        <div class="hstep">
+          <div class="hstep-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+            </svg>
+          </div>
+          <div class="hstep-year">1974</div>
+          <div class="hstep-text">Transición a plastitapa con liner interior de PVC</div>
+        </div>
+        <div class="hstep">
+          <div class="hstep-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 2v6L3 18a2 2 0 0 0 1.8 2.9h14.4A2 2 0 0 0 21 18L16 8V2"/><line x1="8" y1="2" x2="16" y2="2"/><path d="M9 13h1m3 0h1"/>
+            </svg>
+          </div>
+          <div class="hstep-year">1997</div>
+          <div class="hstep-text">Nace CAP LINER de México en Guadalajara, Jalisco</div>
+        </div>
+        <div class="hstep">
+          <div class="hstep-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
+          <div class="hstep-year">Hoy</div>
+          <div class="hstep-text">Líderes nacionales en compuestos para plastitapas</div>
+        </div>
+      </div>
+    </div>
 
-    <script src="script.js"></script>
+    <div class="quality-banner reveal">
+      <div class="quality-banner-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="26" height="26">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <div class="quality-banner-text">
+        <strong>Política de Calidad —</strong> CAP LINER de México está dedicada a la fabricación de productos plásticos y a satisfacer los requerimientos de nuestros clientes y partes interesadas, cumpliendo con las normas aplicables. Comprometidos con un sistema de calidad y una <strong>cultura de mejora continua</strong>.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="why-inner">
+    <div class="reveal" style="text-align:center; margin-bottom:3.5rem">
+      <span class="section-eyebrow">Nuestra propuesta de valor</span>
+      <h2 class="section-title">¿Por qué CAP LINER?</h2>
+    </div>
+    <div class="pillars">
+      <div class="pillar reveal" style="transition-delay:.05s">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+          </svg>
+        </div>
+        <h3 class="pillar-title">Precisión industrial</h3>
+        <p class="pillar-text">Tolerancias de ±0.02mm en espesor de liner. Formulaciones validadas para presiones de hasta 120 PSI. Cada lote trazable desde la materia prima.</p>
+      </div>
+      <div class="pillar reveal" style="transition-delay:.12s">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+          </svg>
+        </div>
+        <h3 class="pillar-title">Escala sin límites</h3>
+        <p class="pillar-text">Capacidad para correr desde muestras de prototipo hasta millones de piezas semanales. Inventario buffer para respuesta en 48 horas.</p>
+      </div>
+      <div class="pillar reveal" style="transition-delay:.2s">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <h3 class="pillar-title">Soporte técnico Jalisco</h3>
+        <p class="pillar-text">Ingenieros de aplicación en campo. Visitas a planta para validación de sellado. Reformulación personalizada sin costo adicional para volumen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="reveal" style="margin-bottom:3.5rem">
+      <span class="section-eyebrow" style="color:var(--brand)">Trabajemos juntos</span>
+      <h2 class="section-title">Cotiza tu proyecto</h2>
+      <p class="section-sub">Cuéntanos tu aplicación. Nuestro equipo técnico te responde en menos de 24 horas con una propuesta a tu medida.</p>
+    </div>
+    <div class="contact-grid">
+      <form class="contact-form reveal-left" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" name="nombre" placeholder="Tu nombre" required>
+          </div>
+          <div class="form-group">
+            <label>Empresa</label>
+            <input type="text" name="empresa" placeholder="Razón social" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="correo@empresa.com" required>
+          </div>
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="tel" name="telefono" placeholder="+52 33 0000 0000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Industria / Aplicación</label>
+          <select name="industria">
+            <option value="">Seleccionar industria…</option>
+            <option>Bebidas</option>
+            <option>Farmacéutica</option>
+            <option>Alimentos</option>
+            <option>Cosméticos</option>
+            <option>Química industrial</option>
+            <option>Otra</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Mensaje / Requerimiento</label>
+          <textarea name="mensaje" placeholder="Describe tu aplicación: tipo de envase, volumen aproximado, condiciones de sellado…"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Enviar solicitud →</button>
+      </form>
+
+      <div class="contact-info reveal">
+        <div class="contact-person">
+          <div class="contact-person-name">Luis Javier Fernández Barragán</div>
+          <div class="contact-person-role">Presidente del Consejo de Administración</div>
+          <div class="contact-person-details">
+            <a href="mailto:ljfernandezb@capliner.com.mx" class="contact-person-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              ljfernandezb@capliner.com.mx
+            </a>
+            <a href="tel:+525554330462" class="contact-person-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/></svg>
+              +52 55 5433 0462
+            </a>
+          </div>
+        </div>
+        <div class="contact-person">
+          <div class="contact-person-name">Prisciliano Zúñiga</div>
+          <div class="contact-person-role">Director General</div>
+          <div class="contact-person-details">
+            <a href="mailto:prisciliano.zuniga@capliner.com.mx" class="contact-person-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              prisciliano.zuniga@capliner.com.mx
+            </a>
+            <a href="tel:+523338123556" class="contact-person-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/></svg>
+              +52 33 3812 3556
+            </a>
+          </div>
+        </div>
+        <div class="contact-person">
+          <div class="contact-person-name">Mario Castañón</div>
+          <div class="contact-person-role">Líder de Desarrollo y Producción</div>
+          <div class="contact-person-details">
+            <a href="mailto:aseguramientocal2@gmail.com" class="contact-person-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              aseguramientocal2@gmail.com
+            </a>
+            <a href="tel:+523313124546" class="contact-person-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/></svg>
+              +52 33 1312 4546
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal-right">
+        <p style="font-size:.7rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.45); margin-bottom:.7rem; display:flex; align-items:center; gap:.4rem;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Nuestra Ubicación
+        </p>
+        <div class="jalisco-wrap">
+          <img src="imagenes/guadalajara.png" alt="Ubicación Cap Liner — Guadalajara, Jalisco">
+        </div>
+        <p style="text-align:center; font-size:.78rem; color:rgba(255,255,255,.4); margin-top:.65rem; font-weight:600; letter-spacing:.04em;">Guadalajara, Jalisco · México</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="imagenes/logo_capliner_v1_blanco.png" alt="Cap Liner de México">
+  </div>
+  <div class="footer-copy">© 2026 CAP LINER S.A. de C.V. · Jalisco, México · Todos los derechos reservados</div>
+  <div class="footer-copy">El sello que protege cada gota.</div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── PARTICLES ──
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resize() {
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+}
+
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.r = Math.random() * 2.2 + .4;
+    this.vx = (Math.random() - .5) * .5;
+    this.vy = (Math.random() - .5) * .4 - .2;
+    this.opacity = Math.random() * .5 + .1;
+    this.pulse = Math.random() * Math.PI * 2;
+  }
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+    this.pulse += .025;
+    this.opacity = .1 + Math.abs(Math.sin(this.pulse)) * .45;
+    if (this.y < -10 || this.x < -10 || this.x > canvas.width + 10) this.reset();
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(243,66,19,${this.opacity})`;
+    ctx.fill();
+  }
+}
+
+function initParticles() {
+  particles = [];
+  const count = Math.floor((canvas.width * canvas.height) / 5000);
+  for (let i = 0; i < count; i++) particles.push(new Particle());
+}
+
+function animParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animParticles);
+}
+
+window.addEventListener('resize', () => { resize(); initParticles(); });
+resize(); initParticles(); animParticles();
+
+// ── SCROLL REVEAL ──
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(el => revealObs.observe(el));
+
+// ── COUNTERS ──
+const statNums = document.querySelectorAll('.stat-num[data-target]');
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    const target = +el.dataset.target;
+    let cur = 0;
+    const step = target / 50;
+    const timer = setInterval(() => {
+      cur = Math.min(cur + step, target);
+      el.textContent = Math.floor(cur) + (target >= 100 ? 'M+' : '+');
+      if (cur >= target) clearInterval(timer);
+    }, 30);
+    counterObs.unobserve(el);
+  });
+}, { threshold: .5 });
+statNums.forEach(el => counterObs.observe(el));
+
+// ── TIMELINE ANIMATION ──
+const processSection = document.getElementById('process');
+let timelineAnimated = false;
+const timelineObs = new IntersectionObserver((entries) => {
+  if (entries[0].isIntersecting && !timelineAnimated) {
+    timelineAnimated = true;
+    const progress = document.getElementById('timelineProgress');
+    const nodes = [0,1,2,3,4].map(i => document.getElementById('node'+i));
+    const labels = [0,1,2,3,4].map(i => document.getElementById('lbl'+i));
+    const steps = [0, 25, 50, 75, 100];
+    steps.forEach((pct, i) => {
+      setTimeout(() => {
+        progress.style.width = pct + '%';
+        if (nodes[i]) { nodes[i].classList.add('active'); labels[i].classList.add('active'); }
+      }, i * 300 + 200);
+    });
+  }
+}, { threshold: .3 });
+timelineObs.observe(processSection);
+
+// ── CONTACT FORM ──
+function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const nombre   = form.nombre.value;
+  const empresa  = form.empresa.value;
+  const email    = form.email.value;
+  const telefono = form.telefono.value || 'No proporcionado';
+  const industria = form.industria.value || 'No especificada';
+  const mensaje  = form.mensaje.value || '';
+
+  const to = 'ljfernandezb@capliner.com.mx,prisciliano.zuniga@capliner.com.mx,aseguramientocal2@gmail.com';
+  const subject = encodeURIComponent('Solicitud de cotización - ' + empresa);
+  const body = encodeURIComponent(
+    'Nombre: ' + nombre +
+    '\nEmpresa: ' + empresa +
+    '\nCorreo: ' + email +
+    '\nTeléfono: ' + telefono +
+    '\nIndustria / Aplicación: ' + industria +
+    '\n\nMensaje / Requerimiento:\n' + mensaje +
+    '\n\n— Enviado desde capliner.com.mx'
+  );
+
+  window.open('mailto:' + to + '?subject=' + subject + '&body=' + body);
+
+  const btn = form.querySelector('.btn-submit');
+  btn.textContent = '✓ Solicitud enviada';
+  btn.style.background = '#2d8a4e';
+  setTimeout(() => {
+    btn.textContent = 'Enviar solicitud →';
+    btn.style.background = '';
+    form.reset();
+  }, 3000);
+}
+</script>
 </body>
 </html>
